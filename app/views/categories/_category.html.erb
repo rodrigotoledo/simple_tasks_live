@@ -3,9 +3,9 @@
     <%= category.id %>
   </td>
   <td>
-    <%= category.title %>
+    <%= link_to category.title, edit_category_path(category) %>
   </td>
   <td>
-    <%= link_to "Edit this", edit_category_path(category) %>
+    <%= button_to "Destroy this", category_path(category), method: :delete, type: :button, class: 'btn btn-danger' %>
   </td>
 </tr>
