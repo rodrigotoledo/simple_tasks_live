@@ -1,0 +1,20 @@
+<tr id="<%= dom_id task %>">
+  <td>
+    <%= task.id %>
+  </td>
+  <td>
+    <%= link_to task.category.title, edit_category_path(task.category) %>
+  </td>
+  <td>
+    <%= task.title %>
+  </td>
+  <td>
+    <%= task.description %>
+  </td>
+  <td>
+    <%= l(task.completed_at) if task.completed_at %>
+  </td>
+  <td>
+    <%= link_to "Edit this", edit_task_path(task) %>
+  </td>
+</tr>
