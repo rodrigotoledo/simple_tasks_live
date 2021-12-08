@@ -6,15 +6,12 @@
     <%= link_to task.category.title, edit_category_path(task.category) %>
   </td>
   <td>
-    <%= task.title %>
-  </td>
-  <td>
-    <%= task.description %>
+    <%= link_to task.title, edit_task_path(task) %>
   </td>
   <td>
     <%= l(task.completed_at) if task.completed_at %>
   </td>
   <td>
-    <%= link_to "Edit this", edit_task_path(task) %>
+    <%= button_to "Remove this", task_path(task), method: :delete, class: 'btn btn-danger' %>
   </td>
 </tr>
