@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.0.rc1'
+gem "rails", "~> 7.0.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails', '>= 3.4.1'
@@ -63,8 +63,10 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rufo'
 
   gem 'to_factory'
+  gem 'letter_opener'
 end
 
 group :development do
@@ -86,7 +88,9 @@ group :test do
   gem 'simplecov'
   gem 'webdrivers'
   gem 'rails-controller-testing'
+  gem 'database_cleaner-active_record'
 end
 
 gem 'bootstrap_form', '~> 5.0'
 gem 'faker'
+gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'

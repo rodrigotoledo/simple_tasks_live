@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= action_cable_meta_tag %>
   </head>
 
   <body>
@@ -44,23 +45,17 @@
                 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
               </a>
 
-              <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><%= link_to "Tasks", tasks_path, class: "nav-link px-2 link-dark" %></li>
-                <li><%= link_to "Categories", categories_path, class: "nav-link px-2 link-dark" %></li>
-              </ul>
-
-              <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                  <li><%= link_to 'New Task', new_task_path, class: "dropdown-item" %></li>
-                  <li><%= link_to 'New Category', new_category_path, class: "dropdown-item" %></li>
-                </ul>
-              </div>
+              <%= render partial: 'layouts/header_authenticated' if user_signed_in? %>
+              <%= render partial: 'layouts/header_not_authenticated' unless user_signed_in? %>
             </div>
           </div>
         </header>
+
+        <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+        <% end %>
 
         <%= yield %>
       </main>
