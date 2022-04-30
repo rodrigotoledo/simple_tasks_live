@@ -1,5 +1,8 @@
 <div class="card">
   <div class="card-body">
+    <% unless task.new_record? %>
+      <h3>Editing task: <%=task.title%></h3>
+    <% end %>
     <%= bootstrap_form_for(task) do |form| %>
       <% if task.errors.any? %>
         <div style="color: red">

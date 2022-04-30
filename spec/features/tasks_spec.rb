@@ -30,22 +30,23 @@ RSpec.describe 'Tasks operations' do
     before do
       create_user_and_log_in
     end
-    describe 'GET /index' do
 
+    describe 'GET /index' do
       it 'renders a successful response' do
-        Task.create! valid_attributes
-        # get tasks_url
-        # expect(response).to be_successful
+        task = create(:task)
+        click_link 'Tasks'
+        expect(page).to have_content(task.title)
       end
     end
 
-    # describe 'GET /show' do
-    #   it 'renders a successful response' do
-    #     task = Task.create! valid_attributes
-    #     get task_url(task)
-    #     expect(response).to be_successful
-    #   end
-    # end
+    describe 'GET /edit' do
+      it 'renders a successful response' do
+        task = create(:task)
+        click_link 'Tasks'
+        click_link(href: edit_task_path(task))
+        expect(page).to have_content("Editing task: #{task.title}")
+      end
+    end
 
     # describe 'GET /new' do
     #   it 'renders a successful response' do
@@ -62,33 +63,37 @@ RSpec.describe 'Tasks operations' do
     #   end
     # end
 
-    # describe 'POST /create' do
-    #   context 'with valid parameters' do
-    #     it 'creates a new Task' do
-    #       expect do
-    #         post tasks_url, params: { task: valid_attributes }
-    #       end.to change(Task, :count).by(1)
-    #     end
+    describe 'POST /create' do
+      context 'with valid parameters' do
+        before do
 
-    #     it 'redirects to the created task' do
-    #       post tasks_url, params: { task: valid_attributes }
-    #       expect(response).to redirect_to(tasks_url)
-    #     end
-    #   end
+        end
+        it 'creates a new Task' do
+          click_link 'New Task'
+          expect do
+            post tasks_url, params: { task: valid_attributes }
+          end.to change(Task, :count).by(1)
+        end
 
-    #   context 'with invalid parameters' do
-    #     it 'does not create a new Task' do
-    #       expect do
-    #         post tasks_url, params: { task: invalid_attributes }
-    #       end.to change(Task, :count).by(0)
-    #     end
+        it 'redirects to the created task' do
+          post tasks_url, params: { task: valid_attributes }
+          expect(response).to redirect_to(tasks_url)
+        end
+      end
 
-    #     it "renders a successful response (i.e. to display the 'new' template)" do
-    #       post tasks_url, params: { task: invalid_attributes }
-    #       expect(response).to render_template(:new)
-    #     end
-    #   end
-    # end
+      context 'with invalid parameters' do
+        it 'does not create a new Task' do
+          expect do
+            post tasks_url, params: { task: invalid_attributes }
+          end.to change(Task, :count).by(0)
+        end
+
+        it "renders a successful response (i.e. to display the 'new' template)" do
+          post tasks_url, params: { task: invalid_attributes }
+          expect(response).to render_template(:new)
+        end
+      end
+    end
 
     # describe 'PATCH /update' do
     #   context 'with valid parameters' do

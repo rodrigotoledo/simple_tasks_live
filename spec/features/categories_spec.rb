@@ -39,7 +39,7 @@ RSpec.describe 'Operations for categerories' do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      category = Category.create! valid_attributes
+      category = create(:category)
       click_link 'Categories'
       click_link category.title
       expect(page).to have_content("Editing category: #{category.title}")
@@ -48,7 +48,7 @@ RSpec.describe 'Operations for categerories' do
 
   describe 'GET /edit' do
     it 'render a successful response' do
-      category = Category.create! valid_attributes
+      category = create(:category)
       new_attributes = attributes_for(:category)
       click_link 'Categories'
       click_link category.title

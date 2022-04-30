@@ -7,8 +7,8 @@
 </div>
 
 <div style="diplay:inline">
-  <%=link_to 'Edit this task', edit_task_path(task), class: 'btn btn-primary' %>
-  <%=button_to "Destroy this task", task, class: 'btn btn-danger', method: :delete %>
+  <%=link_to 'Edit this task', edit_task_path(task) %>
+  <%=button_to "Destroy this task", task, method: :delete %>
 </div>
 
 <% end %>

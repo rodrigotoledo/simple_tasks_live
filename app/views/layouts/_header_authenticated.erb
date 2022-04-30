@@ -1,5 +1,6 @@
 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
   <li><%= link_to "Tasks", tasks_path, class: "nav-link px-2 link-dark" %></li>
+  <li><%= link_to "New Task", new_task_path, class: "nav-link px-2 link-dark" %></li>
   <li><%= link_to "Categories", categories_path, class: "nav-link px-2 link-dark" %></li>
 </ul>
 
@@ -8,7 +9,7 @@
     <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
   </a>
   <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-    <li><%= link_to 'Edit my account', edit_user_registration_path, class: "dropdown-item" %></li>
-    <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+    <li><%= link_to "Edit my account", edit_user_registration_path, class: "dropdown-item" %></li>
+    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
   </ul>
 </div>
