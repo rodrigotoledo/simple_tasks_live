@@ -1,19 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Tasks</h1>
-
-<table class="table" id="tasks">
-  <thead class="thead-light">
-    <tr>
-      <th>#</th>
-      <th>Category</th>
-      <th>Title</th>
-      <th>Completed at</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @tasks %>
-  </tbody>
-</table>
-
+<%= turbo_stream_from "tasks" %>
+<%= turbo_frame_tag "tasks" do %>
+  <%= render @tasks %>
+<% end %>
